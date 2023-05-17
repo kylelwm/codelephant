@@ -3,33 +3,6 @@ from unittest import TestCase
 from unittest.mock import patch
 from main import process_directory
 
-# def process_directory(directory):
-#     result = {
-#         "summary": {},
-#         "results": []
-#     }
-#     extensions = []
-#     try:
-#         for file in get_all_files(directory):
-#             extension = re.split("\.|/", file)[-1]
-#             if extension in KNOWN_EXTENSIONS:
-#                 extensions.append(extension)
-#                 result["results"].append({
-#                     "path": file,
-#                     "language": KNOWN_EXTENSIONS[extension]
-#                 })
-#     except ValueError as e:
-#         print(e)
-#         sys.exit(1)
-
-
-#     counter =  Counter(extensions)
-#     for extension, count in counter.items():
-#         result["summary"][KNOWN_EXTENSIONS[extension]] = count / sum(counter.values())
-#     print(json.dumps(result, indent=4))
-#     sys.exit(0)
-    
-
 
 class TestProcessDirectory(TestCase):
     @patch("main.get_all_files")
@@ -70,7 +43,6 @@ class TestProcessDirectory(TestCase):
             "/path/to/some/project/Makefile",
             "/path/to/some/project/README.md",
         ]
-        print(process_directory("any_directory"))
         assert process_directory("any_directory") == json.dumps({
             "summary": {
                 "python": 0.142857,
