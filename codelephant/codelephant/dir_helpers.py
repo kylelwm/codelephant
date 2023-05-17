@@ -7,4 +7,4 @@ def get_all_files(directory: str) -> Iterator[str]:
         raise ValueError(f"Error: {directory} is not a valid directory.")
     for root, _, files in os.walk(directory):
         for name in files:
-            yield(os.path.join(root, name))
+            yield(os.path.join(root.removeprefix(directory), name))
