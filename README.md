@@ -40,6 +40,13 @@ Install Dependencies
 
 Replace /path/to/directory with the actual directory path you want to process.
 
+## Usage running docker locally
+1. Build the image
+`docker build . -t codelephant`
+
+2. Run the CLI tool on the current directory with the following command:
+`docker run -it --volume $(pwd):/app codelephant`
+
 ## Examples
 Given the following directory structure:
 ```
