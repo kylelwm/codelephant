@@ -47,6 +47,9 @@ Replace /path/to/directory with the actual directory path you want to process.
 2. Run the CLI tool on the current directory with the following command:
 `docker run -it --volume $(pwd):/app codelephant`
 
+## Usage running from Docker Hub image
+`docker run -it --volume $(pwd):/app kylelwm/codelephant`
+
 ## Examples
 Given the following directory structure:
 ```
