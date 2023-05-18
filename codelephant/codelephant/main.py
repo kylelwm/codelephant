@@ -1,4 +1,6 @@
-import os
+"""
+Module providing main Codelephant CLI functionalities
+"""
 import sys
 import re
 import json
@@ -12,6 +14,9 @@ KNOWN_EXTENSIONS = {
 }
 
 def process_directory(directory: str) -> str:
+    """
+    Function to iterate through all files in a directory and returns a generated report as string
+    """
     result = {
         "summary": {},
         "results": []
@@ -26,8 +31,8 @@ def process_directory(directory: str) -> str:
                     "path": file,
                     "language": KNOWN_EXTENSIONS[extension]
                 })
-    except ValueError as e:
-        print(e)
+    except ValueError as error:
+        print(error)
         sys.exit(1)
 
 
@@ -35,7 +40,6 @@ def process_directory(directory: str) -> str:
     for extension, count in counter.items():
         result["summary"][KNOWN_EXTENSIONS[extension]] = round(count / sum(counter.values()), 6)
     return json.dumps(result, indent=4)
-    
 
 
 if __name__ == "__main__":
@@ -43,5 +47,4 @@ if __name__ == "__main__":
         print("Please provide a directory path as an argument.")
         sys.exit(1)
 
-    directory = sys.argv[1]
-    print(process_directory(directory))
+    print(process_directory(sys.argv[1]))

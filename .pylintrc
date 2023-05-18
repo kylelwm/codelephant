@@ -1,0 +1,7 @@
+[MAIN]
+# Files or directories matching the regular expression patterns are skipped.
+# The regex matches against base names, not paths. The default value ignores
+# Emacs file locks
+ignore-patterns=^test_.*.py$
+# Loads the current module so it can be imported
+init-hook='import sys; sys.path.append("./codelephant/codelephant")'
